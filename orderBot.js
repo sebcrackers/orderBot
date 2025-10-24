@@ -2,6 +2,9 @@ const axios = require('axios');
 const chalk = require('chalk');
 const figlet = require('figlet');
 const Table = require('cli-table3');
+const express = require('express'); // Add Express
+const app = express();
+const port = process.env.PORT || 4000; // Use environment port or default
 
 // === CONFIGURATION ===
 const API_URL = 'https://yoyomedia.in/api/v2';
@@ -41,7 +44,6 @@ async function getBalance() {
     }
 }
 
-
 // === PLACE A SINGLE ORDER ===
 async function placeOrder(serviceId, quantity, link) {
     try {
@@ -55,13 +57,11 @@ async function placeOrder(serviceId, quantity, link) {
             }
         });
 
-
         return { link, serviceId, quantity, orderId: res.data.order, status: '✅ Success' };
     } catch (err) {
         return { link, serviceId, quantity, orderId: '-', status: '❌ Failed' };
     }
 }
-
 
 // === HANDLE ALL ORDERS ===
 async function orderAllLinks() {
@@ -106,8 +106,18 @@ function countdown(minutesTotal = 40) {
     }, 60 * 1000); // run every 1 minute
 }
 
+// === WEB SERVER SETUP ===
+app.get('/', (req, res) => {
+    res.send(`
+        <h1>View Bot is Running</h1>
+        <p>This is a background service that automatically processes orders.</p>
+        <p>Check the server logs for activity details.</p>
+    `);
+});
 
-
-printHeader(); // Only once, right here
-// === RUN FIRST TIME AND START LOOP ===
-orderAllLinks().then(() => countdown());
+app.listen(port, () => {
+    console.log(chalk.green(`[🌐] Server running on port ${port}`));
+    printHeader(); // Only once, right here
+    // === RUN FIRST TIME AND START LOOP ===
+    orderAllLinks().then(() => countdown());
+});
