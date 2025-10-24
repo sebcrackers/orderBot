@@ -4,7 +4,7 @@ const figlet = require('figlet');
 const Table = require('cli-table3');
 const express = require('express'); // Add Express
 const app = express();
-const port = process.env.PORT || 4000; // Use environment port or default
+const port = process.env.PORT || 10000; // Use environment port or default
 
 // === CONFIGURATION ===
 const API_URL = 'https://yoyomedia.in/api/v2';
@@ -121,3 +121,4 @@ app.listen(port, () => {
     // === RUN FIRST TIME AND START LOOP ===
     orderAllLinks().then(() => countdown());
 });
+
