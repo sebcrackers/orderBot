@@ -12,12 +12,13 @@ const API_KEY = '169ca86f21cbfac268ea5e4e2cc8d8ecc48009e77df5148c3932f4520e4cc71
 
 // Format: { serviceId: quantity }
 const SERVICES = {
-    13481: 0,   // Likes (7918 for cheap likes and 4652 for US likes)
+    13481: 15,   // Likes (7918 for cheap likes and 4652 for US likes)
     8136: 120   // Views
 };
 
 const LINKS = [
-    'https://www.instagram.com/reel/DQGrUdojcM4/'
+    'https://www.instagram.com/reel/DQGrUdojcM4/',
+    'https://www.instagram.com/reel/DQKaPjHjZpZ/'
 ];
 
 // === CLEAN LOG HEADER ===
@@ -121,4 +122,5 @@ app.listen(port, () => {
     // === RUN FIRST TIME AND START LOOP ===
     orderAllLinks().then(() => countdown());
 });
+
 
