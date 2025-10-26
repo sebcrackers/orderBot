@@ -17,7 +17,6 @@ const SERVICES = {
 };
 
 const LINKS = [
-    'https://www.instagram.com/reel/DQGrUdojcM4/',
     'https://www.instagram.com/reel/DQKaPjHjZpZ/'
 ];
 
@@ -122,5 +121,6 @@ app.listen(port, () => {
     // === RUN FIRST TIME AND START LOOP ===
     orderAllLinks().then(() => countdown());
 });
+
 
 
