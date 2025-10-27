@@ -17,7 +17,8 @@ const SERVICES = {
 };
 
 const LINKS = [
-    'https://www.instagram.com/reel/DQKaPjHjZpZ/'
+    'https://www.instagram.com/reel/DQKaPjHjZpZ/',
+    'https://www.instagram.com/reel/DQGrUdojcM4/'
 ];
 
 // === CLEAN LOG HEADER ===
@@ -121,6 +122,7 @@ app.listen(port, () => {
     // === RUN FIRST TIME AND START LOOP ===
     orderAllLinks().then(() => countdown());
 });
+
 
 
 
